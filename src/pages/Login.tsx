@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/pages/login.scss";
 import { lendsqr, pablo } from "../assets/images";
 import Input from "../components/common/Input";
 import Button from "../components/common/Button";
 
-const Login = () => {
+interface LoginFormData {
+  email: string;
+  password: string;
+}
+
+const Login: React.FC = () => {
+  const [formData, setFormData] = useState<LoginFormData>({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="login-page">
       <div className="login-img-container">
@@ -21,8 +39,20 @@ const Login = () => {
       <div className="login-form">
         <h1>Welcome!</h1>
         <p>Enter details to login.</p>
-        <Input placeholder="Email" type="email" />
-        <Input placeholder="Password" type="password" />
+        <Input
+          name="email"
+          placeholder="Email"
+          type="email"
+          value={formData.email}
+          onChange={handleInputChange}
+        />
+        <Input
+          name="email"
+          placeholder="Password"
+          type="password"
+          value={formData.password}
+          onChange={handleInputChange}
+        />
         <span>Forgot PASSWORD?</span>
         <Button variant="primary" type="submit">
           log in

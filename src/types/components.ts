@@ -1,5 +1,3 @@
-import { IconType } from "react-icons";
-
 interface Option {
   value: string;
   label: string;
@@ -8,7 +6,8 @@ interface Option {
 export interface InputProps {
   type: "text" | "password" | "select" | "date" | "email";
   value: string;
-  onChange: (value: string) => void;
+  name: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   icon?: any;
   placeholder?: string;
   options?: Option[];

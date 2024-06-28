@@ -5,18 +5,26 @@ import "../../styles/components/_input.scss";
 const Input: React.FC<InputProps> = ({
   type,
   value,
+  name,
   onChange,
   icon,
   placeholder,
   options,
   label,
 }) => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    onChange(e.target.value);
+    const syntheticEvent = {
+      target: {
+        name: name,
+        value: e.target.value,
+      },
+    } as React.ChangeEvent<HTMLInputElement>;
+
+    onChange(syntheticEvent);
   };
 
   const togglePasswordVisibility = () => {
@@ -30,6 +38,7 @@ const Input: React.FC<InputProps> = ({
           <div className="input-wrapper">
             <input
               type={showPassword ? "text" : "password"}
+              name={name}
               value={value}
               onChange={handleChange}
               placeholder={placeholder}
