@@ -1,0 +1,52 @@
+@import "../variables";
+
+.login-page {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100vh;
+}
+
+.login-img-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8.8rem;
+  padding: 7.6rem 8.5rem;
+  background-color: #fbfbfb;
+}
+
+.pablo {
+  background-color: #545f7d05;
+}
+
+.login-form {
+  padding: 12rem 18rem 0 8.5rem;
+  // padding-left: 8.5rem;
+  // padding-right: 18rem;
+  // padding-top: 12rem;
+
+  h1 {
+    color: $dark-blue;
+    font-size: 4rem;
+    font-weight: $font-weight-bold;
+    margin-block: 0;
+    line-height: 5.4rem;
+  }
+
+  p {
+    color: $grey;
+    font-size: 2rem;
+    font-weight: $font-weight-regular;
+    line-height: 2.7rem;
+    margin-bottom: 4.9rem;
+  }
+
+  span {
+    color: $aqua-blue;
+    font-size: 1.2rem;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    line-height: 4rem;
+    display: block;
+    margin-bottom: 2.2rem;
+  }
+}

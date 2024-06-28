@@ -1,0 +1,58 @@
+@import "../mixins";
+@import "../variables";
+
+.input-container {
+  margin-bottom: 2.5rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .input-wrapper {
+    position: relative;
+    display: flex;
+    height: 5rem;
+    border: 2px solid #545f7d26;
+    border-radius: 0.5rem;
+
+    input {
+      color: $grey;
+      font-size: 1.4rem;
+      flex-grow: 1;
+      padding-left: 1.5rem;
+      padding-top: 0.7rem;
+      background-color: transparent;
+      border: 0px solid;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: $grey;
+      font-family: inherit;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: $aqua-blue;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-family: inherit;
+      font-size: 1.2rem;
+      font-weight: $font-weight-semibold;
+      line-height: 4rem;
+      padding: 0;
+    }
+  }
+
+  select,
+  input[type="date"] {
+    width: 100%;
+    padding: 0.5rem;
+  }
+}
