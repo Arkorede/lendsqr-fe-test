@@ -1,42 +1,47 @@
 @import "../variables";
 
 .login-page {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+.lendsqr-logo {
+  width: 17.4rem;
+  height: 9rem;
 }
 
 .login-img-container {
   display: flex;
   flex-direction: column;
   gap: 8.8rem;
-  padding: 7.6rem 8.5rem;
+  padding: 7.6rem 8.5%;
   background-color: #fbfbfb;
-}
+  flex: 1;
 
-.pablo {
-  background-color: #545f7d05;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .login-form {
-  padding: 12rem 18rem 0 8.5rem;
-  // padding-left: 8.5rem;
-  // padding-right: 18rem;
-  // padding-top: 12rem;
+  padding: 12rem 8.5%;
+  flex: 1;
 
   h1 {
     color: $dark-blue;
     font-size: 4rem;
     font-weight: $font-weight-bold;
     margin-block: 0;
-    line-height: 5.4rem;
+    line-height: 1.35;
   }
 
   p {
     color: $grey;
     font-size: 2rem;
     font-weight: $font-weight-regular;
-    line-height: 2.7rem;
+    line-height: 1.35;
     margin-bottom: 4.9rem;
   }
 
@@ -48,5 +53,44 @@
     line-height: 4rem;
     display: block;
     margin-bottom: 2.2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .login-page {
+    flex-direction: column;
+  }
+
+  .login-img-container {
+    padding: 4rem 5%;
+    gap: 4rem;
+  }
+
+  .login-form {
+    padding: 6rem 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-form {
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.4rem;
+    }
   }
 }

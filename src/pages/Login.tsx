@@ -26,11 +26,9 @@ const Login: React.FC = () => {
   return (
     <div className="login-page">
       <div className="login-img-container">
-        <img src={lendsqr} width={174} height={36} alt="lendsqr logo" />
+        <img src={lendsqr} alt="lendsqr logo" className="lendsqr-logo" />
         <img
           src={pablo}
-          width={600}
-          height={338}
           alt="pablo"
           // className="pablo"
           // style={{ background: "#545F7D05" }}
