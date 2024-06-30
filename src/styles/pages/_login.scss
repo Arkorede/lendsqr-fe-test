@@ -1,9 +1,10 @@
-@import "../variables";
+@import "../_variables";
 
 .login-page {
   display: flex;
   flex-direction: row;
   min-height: 100vh;
+  font-family: $loginFont-primary;
 }
 
 .lendsqr-logo {
@@ -32,7 +33,7 @@
   h1 {
     color: $dark-blue;
     font-size: 4rem;
-    font-weight: $font-weight-bold;
+    font-weight: $loginFont-weight-bold;
     margin-block: 0;
     line-height: 1.35;
   }
@@ -40,7 +41,7 @@
   p {
     color: $grey;
     font-size: 2rem;
-    font-weight: $font-weight-regular;
+    font-weight: $loginFont-weight-regular;
     line-height: 1.35;
     margin-bottom: 4.9rem;
   }
@@ -48,7 +49,7 @@
   span {
     color: $aqua-blue;
     font-size: 1.2rem;
-    font-weight: $font-weight-semibold;
+    font-weight: $loginFont-weight-semibold;
     text-transform: uppercase;
     line-height: 4rem;
     display: block;

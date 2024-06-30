@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "../styles/pages/login.scss";
+import { useNavigate } from "react-router-dom";
+import "../styles/pages/_login.scss";
 import { lendsqr, pablo } from "../assets/images";
 import Input from "../components/common/Input";
 import Button from "../components/common/Button";
@@ -10,6 +11,8 @@ interface LoginFormData {
 }
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState<LoginFormData>({
     email: "",
     password: "",
@@ -21,6 +24,11 @@ const Login: React.FC = () => {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault;
+    navigate("/dashboard");
   };
 
   return (
@@ -45,14 +53,14 @@ const Login: React.FC = () => {
           onChange={handleInputChange}
         />
         <Input
-          name="email"
+          name="password"
           placeholder="Password"
           type="password"
           value={formData.password}
           onChange={handleInputChange}
         />
         <span>Forgot PASSWORD?</span>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={handleSubmit}>
           log in
         </Button>
       </div>

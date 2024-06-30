@@ -12,6 +12,11 @@ export interface InputProps {
   placeholder?: string;
   options?: Option[];
   label?: string;
+  spanClass?: string;
+  height?: string;
+  width?: string;
+  fontFamily?: string;
+  marginBottom?: string;
 }
 
 type ButtonVariant = "primary" | "success" | "danger";
