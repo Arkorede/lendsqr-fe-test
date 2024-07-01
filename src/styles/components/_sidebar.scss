@@ -1,0 +1,81 @@
+@import "../mixins";
+@import "../variables";
+
+.sidebar-container {
+  width: 20%;
+  box-shadow: 0px 5px 20px 0px #0000000a;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.sidebar-nav {
+  @include flex(center, flex-start, column);
+  gap: 2rem;
+  padding: 0;
+  margin-top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.select-wrapper {
+  width: auto;
+  margin: 2.9rem 0.2rem 3.2rem 3.9rem;
+  @include flex();
+  gap: 1rem;
+}
+
+.sidebar-group {
+  @include flex(flex-start, flex-start, column);
+  gap: 1rem;
+  width: 100%;
+}
+
+.sidebar-heading {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: $grey;
+  text-transform: uppercase;
+  margin: 1.8rem 0 0.5rem 3.9rem;
+}
+
+.sidebar-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  padding: 0;
+
+  &.no-heading {
+    margin-top: -10px;
+  }
+}
+
+.sidebar-item-wrapper {
+  width: 100%;
+}
+
+.sidebar-item {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  color: $grey;
+  padding: 1rem 0 1rem 3.9rem;
+  width: 100%;
+
+  &.active {
+    width: auto;
+    color: $dark-blue;
+    background-color: #ecfeff;
+    border-left: 4px solid $aqua-blue;
+    padding-left: 3.5rem;
+  }
+}

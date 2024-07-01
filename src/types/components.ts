@@ -6,7 +6,7 @@ interface Option {
 export interface InputProps {
   type: "text" | "password" | "select" | "date" | "email";
   value: string;
-  name: string;
+  name?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   icon?: any;
   placeholder?: string;
@@ -16,6 +16,7 @@ export interface InputProps {
   height?: string;
   width?: string;
   fontFamily?: string;
+  fontSize?: string;
   marginBottom?: string;
 }
 
