@@ -25,7 +25,7 @@ import { Link, useLocation } from "react-router-dom";
 import "../../styles/components/_sidebar.scss";
 import Input from "./Input";
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
   const [value, setValue] = useState<string>("");
   const [isMobileMenuActive, setIsMobileMenuActive] = useState<boolean>(false);
 
