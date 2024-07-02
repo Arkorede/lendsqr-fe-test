@@ -1,0 +1,31 @@
+@import "../mixins";
+
+@mixin status-box($bg-color, $text-color) {
+  border-radius: 10rem;
+  background-color: $bg-color;
+
+  p {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 3rem;
+    color: $text-color;
+    text-align: center;
+  }
+}
+
+.status {
+  &-inactive {
+    @include status-box(rgba(84, 95, 125, 0.06), rgba(84, 95, 125, 1));
+  }
+
+  &-pending {
+    @include status-box(rgba(233, 178, 0, 0.1), #e9b200);
+  }
+
+  &-blacklisted {
+    @include status-box(rgba(228, 3, 59, 0.1), #e4033b);
+  }
+  &-active {
+    @include status-box(rgba(57, 205, 98, 0.06), #39cd62);
+  }
+}

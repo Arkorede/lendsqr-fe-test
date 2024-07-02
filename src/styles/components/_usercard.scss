@@ -1,6 +1,92 @@
+@import "../mixins";
+
 .user-card {
   background-color: #fff;
-  height: 16rem;
-  border: 0px solid #213f7d0f;
-  margin-top: 4.9rem;
+  border: 1px solid #213f7d0f;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-width: 0px solid #213f7d0f;
+}
+
+.icon-background {
+  @include flex();
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+
+  img {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.4rem;
+  margin: 1.5rem 0 1rem 0;
+  text-transform: uppercase;
+}
+
+.quantity {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2.4rem;
+  margin-block: 0;
+}
+
+@media (min-width: 768px) {
+  .user-card {
+    height: 14rem;
+    padding: 1.8rem 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .icon-background {
+    width: 4rem;
+    height: 4rem;
+
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .label {
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    margin: 1.8rem 0 1.2rem 0;
+  }
+
+  .quantity {
+    font-size: 2.2rem;
+    line-height: 2.6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .user-card {
+    height: 16rem;
+    padding: 1.8rem 0 0 2.9rem;
+    margin-top: 4.9rem;
+  }
+
+  .icon-background {
+    img {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
+  }
+
+  .label {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    margin: 2rem 0 1.4rem 0;
+  }
+
+  .quantity {
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+  }
 }

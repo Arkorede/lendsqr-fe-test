@@ -1,5 +1,21 @@
+// In users.scss
 .user-cards {
   display: grid;
-  column-gap: 2.7rem;
-  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .user-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .user-cards {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.7rem;
+  }
 }

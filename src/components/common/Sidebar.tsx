@@ -27,10 +27,15 @@ import Input from "./Input";
 
 const Sidebar = () => {
   const [value, setValue] = useState<string>("");
+  const [isMobileMenuActive, setIsMobileMenuActive] = useState<boolean>(false);
 
   const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectValue = e.target.value;
     setValue(selectValue);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuActive(!isMobileMenuActive);
   };
 
   const { pathname } = useLocation();
@@ -172,7 +177,10 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar-container">
-      <ul className="sidebar-nav">
+      <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+        ☰
+      </button>
+      <ul className={`sidebar-nav ${isMobileMenuActive ? "active" : ""}`}>
         <li className="select-wrapper">
           <img src={briefcase} alt="briefcase" />
           <Input

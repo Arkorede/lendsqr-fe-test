@@ -24,6 +24,9 @@ import users_colored from "./users_colored.svg";
 import users_active from "./users_active.svg";
 import loan from "./loan.svg";
 import money from "./money.svg";
+import view from "./view.svg";
+import delete_friend from "./delete_friend.svg";
+import user_dropdown from "./user_dropdown.svg";
 
 export {
   search,
@@ -52,4 +55,7 @@ export {
   users_active,
   loan,
   money,
+  view,
+  delete_friend,
+  user_dropdown,
 };

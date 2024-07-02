@@ -27,3 +27,16 @@ export interface ButtonProps
   variant: ButtonVariant;
   children: React.ReactNode;
 }
+
+export interface UserCardProps {
+  icon: any;
+  backgroundColor: string;
+  label: string;
+  quantity: string | number;
+}
+
+export interface FilterFormProps {
+  onClose: () => void;
+  column: string;
+  onFilter: (column: string, value: string) => void;
+}

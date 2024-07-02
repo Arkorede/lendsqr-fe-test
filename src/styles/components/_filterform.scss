@@ -1,0 +1,38 @@
+@import "../variables";
+
+.filter-form {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #213f7d0f;
+  padding: 2rem;
+  box-shadow: 3px 5px 20px 0px #0000000a;
+  z-index: 10;
+
+  button {
+    border-radius: 0.8rem;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    text-align: center;
+    padding: 0.3rem 1.6rem;
+  }
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reset {
+  height: 3rem;
+  border: 1px solid $grey;
+  color: $grey;
+}
+
+.filter {
+  height: 3rem;
+  border: none;
+  background: $aqua-blue;
+  color: #fff;
+}
