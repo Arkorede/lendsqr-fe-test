@@ -22,6 +22,7 @@ import Reports from "./pages/Reports";
 import Preferences from "./pages/Preferences";
 import FeesPricing from "./pages/FeesPricing";
 import AuditLogs from "./pages/AuditLogs";
+import UserDetails from "./pages/UserDetails";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/dashboard" element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="users" element={<Users />} />
+            <Route path="users/:id" element={<UserDetails />} />
             <Route path="guarantors" element={<Guarantors />} />
             <Route path="loans" element={<Loans />} />
             <Route path="decision-models" element={<DecisionModels />} />

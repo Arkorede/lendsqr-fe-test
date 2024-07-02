@@ -1,0 +1,135 @@
+import React, { useState } from "react";
+import { IoIosArrowRoundBack } from "react-icons/io";
+import "../styles/pages/_userdetails.scss";
+import Button from "../components/common/Button";
+import { LuUser2 } from "react-icons/lu";
+import { IoStarOutline } from "react-icons/io5";
+import GeneralDetails from "../components/tabpanels/GeneralDetails";
+import { useNavigate } from "react-router-dom";
+
+const UserDetails: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<number>(0);
+
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <div
+        className="back-to-user"
+        onClick={() => navigate("/dashboard/users")}
+      >
+        <IoIosArrowRoundBack size={30} />
+        <p>Back to Users</p>
+      </div>
+
+      <div className="user-heading">
+        <h1>User Details</h1>
+        <div className="user-heading-btn">
+          <Button variant="danger">Blacklist User</Button>
+          <Button variant="success">Activate User</Button>
+        </div>
+      </div>
+
+      <div className="user-navigation">
+        <div className="user-name">
+          <div className="user-pic-background">
+            <LuUser2 size={40} />
+          </div>
+          <div className="">
+            <p>Grace Effiom</p>
+            <p>LSQFf587g90</p>
+          </div>
+        </div>
+        <div className="user-tier">
+          <p>User’s Tier</p>
+          <span>
+            <IoStarOutline color="#E9B200" size={14} />
+            <IoStarOutline color="#E9B200" size={14} />
+            <IoStarOutline color="#E9B200" size={14} />
+          </span>
+        </div>
+        <div className="user-money">
+          <p>₦200,000.00</p>
+          <p>9912345678/Providus Bank</p>
+        </div>
+        <div className="tabs">
+          <div className="tab-list-container">
+            <div className="tab-list">
+              <button
+                className={`tab ${activeTab === 0 ? "active" : ""}`}
+                onClick={() => setActiveTab(0)}
+              >
+                General Details
+              </button>
+              <button
+                className={`tab ${activeTab === 1 ? "active" : ""}`}
+                onClick={() => setActiveTab(1)}
+              >
+                Documents
+              </button>
+              <button
+                className={`tab ${activeTab === 2 ? "active" : ""}`}
+                onClick={() => setActiveTab(2)}
+              >
+                Bank Details
+              </button>
+              <button
+                className={`tab ${activeTab === 3 ? "active" : ""}`}
+                onClick={() => setActiveTab(3)}
+              >
+                Loans
+              </button>
+              <button
+                className={`tab ${activeTab === 4 ? "active" : ""}`}
+                onClick={() => setActiveTab(4)}
+              >
+                Savings
+              </button>
+              <button
+                className={`tab ${activeTab === 5 ? "active" : ""}`}
+                onClick={() => setActiveTab(5)}
+              >
+                App and System
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="tab-panels">
+        {activeTab === 0 && (
+          <div className="tab-panel">
+            <GeneralDetails />
+          </div>
+        )}
+        {activeTab === 1 && (
+          <div className="tab-panel">
+            <h2>Documents</h2>
+          </div>
+        )}
+        {activeTab === 2 && (
+          <div className="tab-panel">
+            <h2>Bank Details</h2>
+          </div>
+        )}
+        {activeTab === 3 && (
+          <div className="tab-panel">
+            <h2>Loans</h2>
+          </div>
+        )}
+        {activeTab === 4 && (
+          <div className="tab-panel">
+            <h2>Savings</h2>
+          </div>
+        )}
+        {activeTab === 5 && (
+          <div className="tab-panel">
+            <h2>App and System</h2>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default UserDetails;

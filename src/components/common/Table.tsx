@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/components/_table.scss";
 import { CiMenuKebab } from "react-icons/ci";
 import { IoFilterSharp } from "react-icons/io5";
@@ -48,6 +49,8 @@ const Table: React.FC<TableProps> = ({ data }) => {
   const handleFilter = (column: string, value: string) => {
     setFilterValues((prev) => ({ ...prev, [column]: value }));
   };
+
+  const navigate = useNavigate();
 
   const filteredData = useMemo(() => {
     return data.filter((item) =>
@@ -123,7 +126,10 @@ const Table: React.FC<TableProps> = ({ data }) => {
                         className="table-dropdown__content"
                       >
                         <div className="table-dropdown__list">
-                          <Link to="#" className="table-dropdown__item">
+                          <Link
+                            to={`/dashboard/users/${item.id}`}
+                            className="table-dropdown__item"
+                          >
                             <IoEyeOutline size={16} />
                             <p>View Details</p>
                           </Link>

@@ -18,13 +18,14 @@
   &.danger {
     padding: 10px 20px;
     background-color: transparent;
-    color: #dc3545;
-    border: 2px solid #dc3545;
+    color: #e4033b;
+    border: 1px solid #e4033b;
   }
 
   &.success {
+    padding: 10px 20px;
     background-color: transparent;
-    color: #007bff;
-    border: 2px solid #007bff;
+    color: $aqua-blue;
+    border: 1px solid $aqua-blue;
   }
 }

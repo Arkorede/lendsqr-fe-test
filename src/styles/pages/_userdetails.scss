@@ -1,0 +1,243 @@
+@import "../mixins";
+@import "../variables";
+
+.tab-list-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.back-to-user {
+  @include flex(flex-start, center, row);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+
+  p {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+  }
+
+  @media (min-width: 768px) {
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+
+    p {
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+    }
+  }
+}
+
+.user-heading {
+  @include flex(space-between, center, column);
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+
+    @media (min-width: 768px) {
+      font-size: 2.2rem;
+    }
+  }
+}
+
+.user-heading-btn {
+  @include flex();
+  font-family: inherit;
+  gap: 1rem;
+
+  button {
+    font-family: inherit;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.4rem;
+      padding: 0.7rem 1.5rem;
+    }
+  }
+}
+
+.user-navigation {
+  @include flex(flex-start, center, column);
+  gap: 2rem;
+  padding: 2rem;
+  margin-top: 3rem;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  border-radius: 0.4rem;
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+  position: relative;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 2.7rem;
+    padding: 2.5rem 2.5rem 7.5rem 2.5rem;
+    margin-top: 5rem;
+  }
+
+  .user-name {
+    @include flex(center, center, column);
+    gap: 1rem;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 1.8rem;
+      text-align: left;
+    }
+
+    .user-pic-background {
+      @include flex();
+      width: 8rem;
+      height: 8rem;
+      border-radius: 50%;
+      background-color: rgba(33, 63, 125, 0.16);
+
+      @media (min-width: 768px) {
+        width: 10rem;
+        height: 10rem;
+      }
+    }
+
+    div {
+      > :first-child {
+        font-size: 1.8rem;
+        font-weight: 500;
+        line-height: 2.2rem;
+        margin-block: 0;
+
+        @media (min-width: 768px) {
+          font-size: 2.2rem;
+          line-height: 2.6rem;
+        }
+      }
+
+      > :nth-child(2) {
+        color: $grey;
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: 1.4rem;
+        margin-block: 0;
+        margin-top: 0.5rem;
+
+        @media (min-width: 768px) {
+          font-size: 1.4rem;
+          line-height: 1.6rem;
+          margin-top: 0.7rem;
+        }
+      }
+    }
+  }
+
+  .user-tier {
+    @include flex(center, center, column);
+    padding: 1rem 0;
+    border-top: 1px solid rgba(84, 95, 125, 0.2);
+    border-bottom: 1px solid rgba(84, 95, 125, 0.2);
+
+    @media (min-width: 768px) {
+      padding: 0 2.6rem;
+      border-top: none;
+      border-bottom: none;
+      border-left: 1px solid rgba(84, 95, 125, 0.2);
+      border-right: 1px solid rgba(84, 95, 125, 0.2);
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 1.4rem;
+      color: $grey;
+
+      @media (min-width: 768px) {
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+      }
+    }
+  }
+
+  .user-money {
+    text-align: center;
+
+    @media (min-width: 768px) {
+      text-align: left;
+    }
+
+    > :first-child {
+      font-size: 1.8rem;
+      font-weight: 500;
+      line-height: 2.2rem;
+      margin-block: 0;
+
+      @media (min-width: 768px) {
+        font-size: 2.2rem;
+        line-height: 2.6rem;
+      }
+    }
+
+    > :nth-child(2) {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.2rem;
+      margin-block: 0;
+      margin-top: 0.5rem;
+
+      @media (min-width: 768px) {
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+        margin-top: 0.7rem;
+      }
+    }
+  }
+
+  .tabs {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    @media (min-width: 768px) {
+      position: absolute;
+      bottom: 0;
+    }
+
+    .tab-list {
+      @include flex(flex-start);
+      padding: 0;
+      min-width: max-content;
+
+      @media (min-width: 1024px) {
+        @include flex(space-between);
+        padding: 0 5rem 0 0;
+      }
+    }
+
+    .tab {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      font-weight: 400;
+      font-family: inherit;
+      line-height: 2.5rem;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      white-space: nowrap;
+
+      @media (min-width: 768px) {
+        font-size: 1.6rem;
+        line-height: 3rem;
+      }
+
+      &.active {
+        font-weight: 500;
+        color: $aqua-blue;
+        border-bottom: 3px solid rgba(57, 205, 204, 1);
+      }
+    }
+  }
+}
