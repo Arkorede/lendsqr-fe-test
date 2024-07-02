@@ -50,7 +50,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
     setFilterValues((prev) => ({ ...prev, [column]: value }));
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const filteredData = useMemo(() => {
     return data.filter((item) =>
