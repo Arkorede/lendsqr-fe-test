@@ -107,10 +107,12 @@ const Table: React.FC<TableProps> = ({ data }) => {
                 <td className="">
                   <p className="">{item.organization}</p>
                 </td>
-                <td className="">{item.username}</td>
+                <td className="">
+                  {item.first_name} {item.last_name}
+                </td>
                 <td className="">{item.email}</td>
-                <td className="">{item.phone}</td>
-                <td className="">{item.dateJoined}</td>
+                <td className="">{item.bvn}</td>
+                <td className="">{item.date_joined}</td>
                 <td className="">{getStatus(item.status)}</td>
                 <td>
                   <div className="table-dropdown">

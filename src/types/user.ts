@@ -1,0 +1,31 @@
+export interface User {
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  gender: string;
+  bvn: number;
+  marital_status: string;
+  children: number;
+  residence_type: string;
+  education_level: string;
+  employment_status: string;
+  sector: string;
+  employment_duration: number;
+  office_email: string;
+  monthly_income: number;
+  loan_amount: number;
+  twitter: string;
+  facebook: string;
+  instagram: string;
+  guarantor_name: string;
+  guarantor_phone: string;
+  guarantor_email: string;
+  relationship: string;
+  date_joined: string;
+  status: "Active" | "Inactive" | "Pending" | "Blacklisted";
+  organization: string;
+  account_balance: number;
+  account_number: number;
+  bank_name: string;
+}

@@ -1,43 +1,45 @@
 import React from "react";
 import "../../styles/components/_generaldetails.scss";
 
-const GeneralDetails: React.FC = () => {
+const GeneralDetails: React.FC = ({ user }) => {
   return (
     <div className="general-details">
       {/* Personal Information */}
       <h2>Personal Information</h2>
       <div className="general-info">
         <div className="">
-          <h5>full Name</h5>
-          <p>Grace Effiom</p>
+          <h5>full name</h5>
+          <p>
+            {user.first_name} {user.last_name}
+          </p>
         </div>
         <div className="">
           <h5>Phone Number</h5>
-          <p>07060780922</p>
+          <p>{user.phone}</p>
         </div>
         <div className="">
           <h5>Email Address</h5>
-          <p>grace@gmail.com</p>
+          <p>{user.email}</p>
         </div>
         <div className="">
           <h5>Bvn</h5>
-          <p>07060780922</p>
+          <p>{user.bvn}</p>
         </div>
         <div className="">
           <h5>Gender</h5>
-          <p>Female</p>
+          <p>{user.gender}</p>
         </div>
         <div className="">
           <h5>Marital status</h5>
-          <p>Single</p>
+          <p>{user.marital_status}</p>
         </div>
         <div className="">
           <h5>Children</h5>
-          <p>None</p>
+          <p>{user.children === 0 ? "None" : user.children}</p>
         </div>
         <div className="">
           <h5>Type of residence</h5>
-          <p>Parent’s Apartment</p>
+          <p>{user.residence_type}</p>
         </div>
       </div>
 
@@ -46,35 +48,35 @@ const GeneralDetails: React.FC = () => {
       <div className="general-info">
         <div className="">
           <h5>level of education</h5>
-          <p>B.Sc</p>
+          <p>{user.education_level}</p>
         </div>
         <div className="">
           <h5>Phone Number</h5>
-          <p>07060780922</p>
+          <p>{user.phone}</p>
         </div>
         <div className="">
           <h5>employment status</h5>
-          <p>Employed</p>
+          <p>{user.employment_status}</p>
         </div>
         <div className="">
           <h5>sector of employment</h5>
-          <p>FinTech</p>
+          <p>{user.sector}</p>
         </div>
         <div className="">
           <h5>Duration of employment</h5>
-          <p>2 years</p>
+          <p>{user.employment_duration} years</p>
         </div>
         <div className="">
           <h5>office email</h5>
-          <p>grace@lendsqr.com</p>
+          <p>{user.office_email}</p>
         </div>
         <div className="">
           <h5>Monthly income</h5>
-          <p>₦200,000.00- ₦400,000.00</p>
+          <p>{user.monthly_income}</p>
         </div>
         <div className="">
           <h5>loan repayment</h5>
-          <p>40,000</p>
+          <p>{user.loan_amount}</p>
         </div>
       </div>
 
@@ -83,15 +85,15 @@ const GeneralDetails: React.FC = () => {
       <div className="general-info">
         <div className="">
           <h5>Twitter</h5>
-          <p>B.Sc</p>
+          <p>{user.twitter}</p>
         </div>
         <div className="">
-          <h5>Phone Number</h5>
-          <p>07060780922</p>
+          <h5>Facebook</h5>
+          <p>{user.facebook}</p>
         </div>
         <div className="">
-          <h5>employment status</h5>
-          <p>Employed</p>
+          <h5>Instagram</h5>
+          <p>{user.instagram}</p>
         </div>
         <div></div>
         <div></div>
@@ -102,19 +104,19 @@ const GeneralDetails: React.FC = () => {
       <div className="general-info guarantor-info">
         <div className="">
           <h5>full Name</h5>
-          <p>Grace Effiom</p>
+          <p>{user.guarantor_name}</p>
         </div>
         <div className="">
           <h5>Phone Number</h5>
-          <p>07060780922</p>
+          <p>{user.guarantor_phone}</p>
         </div>
         <div className="">
           <h5>Email Address</h5>
-          <p>grace@gmail.com</p>
+          <p>{user.guarantor_email}</p>
         </div>
         <div className="">
           <h5>Relationship</h5>
-          <p>Sister</p>
+          <p>{user.relationship}</p>
         </div>
         <div></div>
         <div></div>

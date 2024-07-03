@@ -1,16 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import "../styles/pages/_userdetails.scss";
 import Button from "../components/common/Button";
 import { LuUser2 } from "react-icons/lu";
 import { IoStarOutline } from "react-icons/io5";
 import GeneralDetails from "../components/tabpanels/GeneralDetails";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import * as db from "../utils/db";
+import useUsers from "../hooks/useUser";
+import { User } from "../types/user";
+
+type newStatus = "Active" | "Inactive" | "Pending" | "Blacklisted";
 
 const UserDetails: React.FC = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
+  const { id } = useParams<{ id: string }>();
+  const { updateUser } = useUsers();
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        setLoading(true);
+        const fetchedUser = await db.get(Number(id));
+        if (fetchedUser) {
+          setUser(fetchedUser);
+        } else {
+          setError("User not found");
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "An error occurred");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUser();
+  }, [id]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!user) return <div>User not found</div>;
+
+  const toggleStatus = async (newStatus: newStatus) => {
+    try {
+      const updatedUser = { ...user, status: newStatus };
+      await updateUser(updatedUser);
+      setUser(updatedUser);
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Error updating user status"
+      );
+    }
+  };
+
+  console.log(user);
 
   return (
     <div>
@@ -25,8 +73,12 @@ const UserDetails: React.FC = () => {
       <div className="user-heading">
         <h1>User Details</h1>
         <div className="user-heading-btn">
-          <Button variant="danger">Blacklist User</Button>
-          <Button variant="success">Activate User</Button>
+          <Button variant="danger" onClick={() => toggleStatus("Blacklisted")}>
+            Blacklist User
+          </Button>
+          <Button variant="success" onClick={() => toggleStatus("Active")}>
+            Activate User
+          </Button>
         </div>
       </div>
 
@@ -36,7 +88,9 @@ const UserDetails: React.FC = () => {
             <LuUser2 size={40} />
           </div>
           <div className="">
-            <p>Grace Effiom</p>
+            <p>
+              {user.first_name} {user.last_name}
+            </p>
             <p>LSQFf587g90</p>
           </div>
         </div>
@@ -49,8 +103,10 @@ const UserDetails: React.FC = () => {
           </span>
         </div>
         <div className="user-money">
-          <p>₦200,000.00</p>
-          <p>9912345678/Providus Bank</p>
+          <p>₦{user.account_balance}</p>
+          <p>
+            {user.account_number}/{user.bank_name}
+          </p>
         </div>
         <div className="tabs">
           <div className="tab-list-container">
@@ -99,7 +155,7 @@ const UserDetails: React.FC = () => {
       <div className="tab-panels">
         {activeTab === 0 && (
           <div className="tab-panel">
-            <GeneralDetails />
+            <GeneralDetails user={user} />
           </div>
         )}
         {activeTab === 1 && (
