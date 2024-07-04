@@ -23,40 +23,46 @@ import Preferences from "./pages/Preferences";
 import FeesPricing from "./pages/FeesPricing";
 import AuditLogs from "./pages/AuditLogs";
 import UserDetails from "./pages/UserDetails";
+import { ProtectedRoute } from "./utils/ProtectedRoute";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Layout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="users" element={<Users />} />
-            <Route path="users/:id" element={<UserDetails />} />
-            <Route path="guarantors" element={<Guarantors />} />
-            <Route path="loans" element={<Loans />} />
-            <Route path="decision-models" element={<DecisionModels />} />
-            <Route path="savings" element={<Savings />} />
-            <Route path="loan-requests" element={<LoanRequests />} />
-            <Route path="whitelist" element={<Whitelist />} />
-            <Route path="karma" element={<Karma />} />
-            <Route path="organization" element={<Organization />} />
-            <Route path="loan-products" element={<LoanProducts />} />
-            <Route path="savings-products" element={<SavingsProduct />} />
-            <Route path="fees-and-charges" element={<FeesCharges />} />
-            <Route path="transactions" element={<Transactions />} />
-            <Route path="services" element={<Services />} />
-            <Route path="service-account" element={<ServiceAccount />} />
-            <Route path="settlements" element={<Settlements />} />
-            <Route path="reports" element={<Reports />} />
-            <Route path="preferences" element={<Preferences />} />
-            <Route path="fees-and-pricing" element={<FeesPricing />} />
-            <Route path="audit-logs" element={<AuditLogs />} />
-          </Route>
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/dashboard" element={<Layout />}>
+                <Route index element={<Dashboard />} />
+                <Route path="users" element={<Users />} />
+                <Route path="users/:id" element={<UserDetails />} />
+                <Route path="guarantors" element={<Guarantors />} />
+                <Route path="loans" element={<Loans />} />
+                <Route path="decision-models" element={<DecisionModels />} />
+                <Route path="savings" element={<Savings />} />
+                <Route path="loan-requests" element={<LoanRequests />} />
+                <Route path="whitelist" element={<Whitelist />} />
+                <Route path="karma" element={<Karma />} />
+                <Route path="organization" element={<Organization />} />
+                <Route path="loan-products" element={<LoanProducts />} />
+                <Route path="savings-products" element={<SavingsProduct />} />
+                <Route path="fees-and-charges" element={<FeesCharges />} />
+                <Route path="transactions" element={<Transactions />} />
+                <Route path="services" element={<Services />} />
+                <Route path="service-account" element={<ServiceAccount />} />
+                <Route path="settlements" element={<Settlements />} />
+                <Route path="reports" element={<Reports />} />
+                <Route path="preferences" element={<Preferences />} />
+                <Route path="fees-and-pricing" element={<FeesPricing />} />
+                <Route path="audit-logs" element={<AuditLogs />} />
+              </Route>
+            </Route>
+            <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </>
   );
 }

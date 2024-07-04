@@ -4,6 +4,7 @@ import "../styles/pages/_login.scss";
 import { lendsqr, pablo } from "../assets/images";
 import Input from "../components/common/Input";
 import Button from "../components/common/Button";
+import { useAuth } from "../context/AuthContext";
 
 interface LoginFormData {
   email: string;
@@ -12,6 +13,8 @@ interface LoginFormData {
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState<LoginFormData>({
     email: "",
@@ -26,9 +29,17 @@ const Login: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault;
-    navigate("/dashboard");
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    setTimeout(() => {
+      if (login(formData.email, formData.password)) {
+        navigate("/dashboard/users");
+      } else {
+        setIsLoading(false);
+      }
+    }, 1000);
   };
 
   return (
@@ -42,7 +53,7 @@ const Login: React.FC = () => {
           // style={{ background: "#545F7D05" }}
         />
       </div>
-      <div className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <h1>Welcome!</h1>
         <p>Enter details to login.</p>
         <Input
@@ -60,10 +71,10 @@ const Login: React.FC = () => {
           onChange={handleInputChange}
         />
         <span>Forgot PASSWORD?</span>
-        <Button variant="primary" type="submit" onClick={handleSubmit}>
-          log in
+        <Button variant="primary" type="submit" disabled={isLoading}>
+          {isLoading ? "logging in" : "log in"}
         </Button>
-      </div>
+      </form>
     </div>
   );
 };
