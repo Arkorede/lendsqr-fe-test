@@ -25,6 +25,7 @@ import AuditLogs from "./pages/AuditLogs";
 import UserDetails from "./pages/UserDetails";
 import { ProtectedRoute } from "./utils/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
+import SystemsMessages from "./pages/SystemsMessages";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
                 <Route path="preferences" element={<Preferences />} />
                 <Route path="fees-and-pricing" element={<FeesPricing />} />
                 <Route path="audit-logs" element={<AuditLogs />} />
+                <Route path="systems-messages" element={<SystemsMessages />} />
               </Route>
             </Route>
             <Route path="*" element={<Navigate to="/dashboard" replace />} />

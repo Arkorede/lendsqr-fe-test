@@ -58,8 +58,6 @@ const UserDetails: React.FC = () => {
     }
   };
 
-  console.log(user);
-
   return (
     <div>
       <div

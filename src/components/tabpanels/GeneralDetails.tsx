@@ -1,7 +1,12 @@
 import React from "react";
 import "../../styles/components/_generaldetails.scss";
+import { User } from "../../types/user";
 
-const GeneralDetails: React.FC = ({ user }) => {
+interface GeneralDetailsProps {
+  user: User;
+}
+
+const GeneralDetails: React.FC<GeneralDetailsProps> = ({ user }) => {
   return (
     <div className="general-details">
       {/* Personal Information */}

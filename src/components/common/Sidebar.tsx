@@ -14,24 +14,35 @@ import {
   request,
   sack,
   scroll,
+  sign_out,
   sliders,
+  system,
   transaction,
   user_check,
   user_cog,
   user_times,
   users,
 } from "../../assets/icons";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../styles/components/_sidebar.scss";
 import Input from "./Input";
+import { useAuth } from "../../context/AuthContext";
 
 const Sidebar: React.FC = () => {
   const [value, setValue] = useState<string>("");
   const [isMobileMenuActive, setIsMobileMenuActive] = useState<boolean>(false);
+  const { logout } = useAuth();
+
+  const navigate = useNavigate();
 
   const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectValue = e.target.value;
     setValue(selectValue);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
   };
 
   const toggleMobileMenu = () => {
@@ -165,6 +176,11 @@ const Sidebar: React.FC = () => {
           link: "/dashboard/audit-logs",
           icon: clipboard_list,
         },
+        {
+          name: "Systems Messages",
+          link: "systems-messages",
+          icon: system,
+        },
       ],
     },
   ];
@@ -218,6 +234,11 @@ const Sidebar: React.FC = () => {
           </li>
         ))}
       </ul>
+      <div className="logout" onClick={handleLogout}>
+        <img src={sign_out} alt="icon" />
+        <p>Logout</p>
+      </div>
+      <small>v1.2.0</small>
     </div>
   );
 };

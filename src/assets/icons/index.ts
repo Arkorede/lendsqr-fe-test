@@ -27,6 +27,8 @@ import money from "./money.svg";
 import view from "./view.svg";
 import delete_friend from "./delete_friend.svg";
 import user_dropdown from "./user_dropdown.svg";
+import system from "./system.svg";
+import sign_out from "./sign_out.svg";
 
 export {
   search,
@@ -58,4 +60,6 @@ export {
   view,
   delete_friend,
   user_dropdown,
+  system,
+  sign_out,
 };
