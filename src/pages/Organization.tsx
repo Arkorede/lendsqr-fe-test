@@ -1,5 +1,9 @@
 const Organization = () => {
-  return <div>Organization</div>;
+  return (
+    <div>
+      <h1>Organization</h1>
+    </div>
+  );
 };
 
 export default Organization;

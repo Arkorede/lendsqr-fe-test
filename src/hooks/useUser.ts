@@ -32,8 +32,6 @@ const useUsers = () => {
     fetchUsers();
   }, []);
 
-  console.log(users);
-
   const updateUser = async (updatedUser: User) => {
     try {
       await db.put(updatedUser);

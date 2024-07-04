@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef } from "react";
 // import { useNavigate } from "react-router-dom";
 import "../../styles/components/_table.scss";
 import { CiMenuKebab } from "react-icons/ci";
 import { IoFilterSharp } from "react-icons/io5";
-import { getStatus } from "../../utils/getStatus";
+import { getStatus } from "../../helpers/getStatus";
 import { Link } from "react-router-dom";
 import { IoEyeOutline } from "react-icons/io5";
 import { GrUserExpert } from "react-icons/gr";
 import { RiUserUnfollowLine } from "react-icons/ri";
-import FilterForm from "./FilterForm";
+// import FilterForm from "./FilterForm";
 import Pagination from "./Pagination";
 
 interface TableData {
@@ -25,7 +25,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
-  const [filterValues, setFilterValues] = useState<Record<string, string>>({});
+  // const [filterValues, setFilterValues] = useState<Record<string, string>>({});
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(10);
@@ -63,19 +63,19 @@ const Table: React.FC<TableProps> = ({ data }) => {
     setActiveFilter(activeFilter === column ? null : column);
   };
 
-  const handleFilter = (column: string, value: string) => {
-    setFilterValues((prev) => ({ ...prev, [column]: value }));
-  };
+  // const handleFilter = (column: string, value: string) => {
+  //   setFilterValues((prev) => ({ ...prev, [column]: value }));
+  // };
 
   // const navigate = useNavigate();
 
-  const filteredData = useMemo(() => {
-    return data.filter((item) =>
-      Object.entries(filterValues).every(([column, value]) =>
-        String(item[column]).toLowerCase().includes(value.toLowerCase())
-      )
-    );
-  }, [data, filterValues]);
+  // const filteredData = useMemo(() => {
+  //   return data.filter((item) =>
+  //     Object.entries(filterValues).every(([column, value]) =>
+  //       String(item[column]).toLowerCase().includes(value.toLowerCase())
+  //     )
+  //   );
+  // }, [data, filterValues]);
 
   const toggleDropdown = (id: number) => {
     setOpenDropdownId(openDropdownId === id ? null : id);
@@ -106,13 +106,13 @@ const Table: React.FC<TableProps> = ({ data }) => {
                       onClick={() => toggleFilter(column)}
                     />
                   </div>
-                  {activeFilter === column && (
+                  {/* {activeFilter === column && (
                     <FilterForm
                       onFilter={handleFilter}
                       onClose={() => setActiveFilter(null)}
                       column={column}
                     />
-                  )}
+                  )} */}
                 </th>
               ))}
               <th></th>

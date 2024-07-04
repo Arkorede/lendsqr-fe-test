@@ -1,5 +1,9 @@
 const Whitelist = () => {
-  return <div>Whitelist</div>;
+  return (
+    <div>
+      <h1>Whitelist</h1>
+    </div>
+  );
 };
 
 export default Whitelist;

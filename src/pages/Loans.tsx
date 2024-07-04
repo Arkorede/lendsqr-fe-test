@@ -1,7 +1,11 @@
-// import React from 'react'
+import React from "react";
 
-const Loans = () => {
-  return <div>Loans</div>;
+const Loans: React.FC = () => {
+  return (
+    <div>
+      <h1>Loans</h1>
+    </div>
+  );
 };
 
 export default Loans;

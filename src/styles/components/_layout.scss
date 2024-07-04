@@ -9,12 +9,12 @@
 
 .layout-body {
   @include flex(flex-start, flex-start, row);
+  background: $lighterGrey;
 }
 
 .outlet {
   width: 100%;
   padding: 6.3rem 5.7rem 0;
-  background: $lighterGrey;
 }
 
 h1 {

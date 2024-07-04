@@ -1,5 +1,9 @@
 const Preferences = () => {
-  return <div>Preferences</div>;
+  return (
+    <div>
+      <h1>Preferences</h1>
+    </div>
+  );
 };
 
 export default Preferences;

@@ -1,5 +1,9 @@
 const SavingsProduct = () => {
-  return <div>SavingsProduct</div>;
+  return (
+    <div>
+      <h1>Savings Product</h1>
+    </div>
+  );
 };
 
 export default SavingsProduct;

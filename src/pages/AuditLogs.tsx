@@ -1,5 +1,9 @@
 const AuditLogs = () => {
-  return <div>AuditLogs</div>;
+  return (
+    <div>
+      <h1>AuditLogs</h1>
+    </div>
+  );
 };
 
 export default AuditLogs;

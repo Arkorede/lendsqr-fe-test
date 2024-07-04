@@ -24,6 +24,7 @@
 
   &-blacklisted {
     @include status-box(rgba(228, 3, 59, 0.1), #e4033b);
+    padding: 0 1rem;
   }
   &-active {
     @include status-box(rgba(57, 205, 98, 0.06), #39cd62);

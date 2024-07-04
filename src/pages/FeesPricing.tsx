@@ -1,5 +1,9 @@
 const FeesPricing = () => {
-  return <div>FeesPricing</div>;
+  return (
+    <div>
+      <h1>Fees and Pricing</h1>
+    </div>
+  );
 };
 
 export default FeesPricing;

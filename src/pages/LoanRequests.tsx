@@ -1,5 +1,9 @@
 const LoanRequests = () => {
-  return <div>LoanRequests</div>;
+  return (
+    <div>
+      <h1>LoanRequests</h1>
+    </div>
+  );
 };
 
 export default LoanRequests;

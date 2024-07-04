@@ -1,5 +1,9 @@
 const FeesCharges = () => {
-  return <div>FeeCharges</div>;
+  return (
+    <div>
+      <h1>FeeCharges</h1>
+    </div>
+  );
 };
 
 export default FeesCharges;

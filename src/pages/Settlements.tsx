@@ -1,5 +1,9 @@
 const Settlements = () => {
-  return <div>Settlements</div>;
+  return (
+    <div>
+      <h1>Settlements</h1>
+    </div>
+  );
 };
 
 export default Settlements;

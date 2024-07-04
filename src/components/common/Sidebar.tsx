@@ -27,6 +27,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../styles/components/_sidebar.scss";
 import Input from "./Input";
 import { useAuth } from "../../context/AuthContext";
+import { isRouteActive } from "../../helpers/isRouteActive";
 
 const Sidebar: React.FC = () => {
   const [value, setValue] = useState<string>("");
@@ -34,6 +35,9 @@ const Sidebar: React.FC = () => {
   const { logout } = useAuth();
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectValue = e.target.value;
@@ -48,10 +52,6 @@ const Sidebar: React.FC = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuActive(!isMobileMenuActive);
   };
-
-  const { pathname } = useLocation();
-  console.log(pathname);
-  const currentPath = location.pathname;
 
   const sidebarNavList = [
     {
@@ -178,7 +178,7 @@ const Sidebar: React.FC = () => {
         },
         {
           name: "Systems Messages",
-          link: "systems-messages",
+          link: "/dashboard/systems-messages",
           icon: system,
         },
       ],
@@ -222,7 +222,7 @@ const Sidebar: React.FC = () => {
                   <Link
                     to={item.link}
                     className={`sidebar-item ${
-                      currentPath === item.link ? "active" : ""
+                      isRouteActive(item.link, currentPath) ? "active" : ""
                     }`}
                   >
                     <img src={item.icon} alt="" />
