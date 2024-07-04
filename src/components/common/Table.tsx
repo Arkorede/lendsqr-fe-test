@@ -9,6 +9,7 @@ import { IoEyeOutline } from "react-icons/io5";
 import { GrUserExpert } from "react-icons/gr";
 import { RiUserUnfollowLine } from "react-icons/ri";
 import FilterForm from "./FilterForm";
+import Pagination from "./Pagination";
 
 interface TableData {
   id: number;
@@ -25,6 +26,22 @@ const Table: React.FC<TableProps> = ({ data }) => {
 
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [filterValues, setFilterValues] = useState<Record<string, string>>({});
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage, setRecordsPerPage] = useState(10);
+
+  const totalPages = Math.ceil(data.length / recordsPerPage);
+
+  const indexOfLastItem = currentPage * recordsPerPage;
+  const indexOfFirstItem = indexOfLastItem - recordsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const handleRecordsPerPageChange = (newRecordsPerPage: number) => {
+    setRecordsPerPage(newRecordsPerPage);
+    setCurrentPage(1);
+  };
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -102,7 +119,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
             </tr>
           </thead>
           <tbody className="">
-            {filteredData.map((item: any) => (
+            {currentItems.map((item: any) => (
               <tr key={item.id} className={``}>
                 <td className="">
                   <p className="">{item.organization}</p>
@@ -152,6 +169,14 @@ const Table: React.FC<TableProps> = ({ data }) => {
             ))}
           </tbody>
         </table>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          totalRecords={data.length}
+          recordsPerPage={recordsPerPage}
+          onPageChange={handlePageChange}
+          onRecordsPerPageChange={handleRecordsPerPageChange}
+        />
       </div>
     </>
   );

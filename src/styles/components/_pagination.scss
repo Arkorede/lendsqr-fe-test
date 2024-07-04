@@ -1,0 +1,106 @@
+@import "../variables";
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__info {
+    color: $grey;
+    font-size: 1.4rem;
+    font-weight: 400;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+      justify-content: flex-start;
+    }
+
+    select {
+      width: 8rem;
+      font-family: inherit;
+      padding: 0.6rem;
+      outline: none;
+      border-radius: 0.4rem;
+      border: 1px solid rgba(33, 63, 125, 0.1);
+      background-color: rgba(33, 63, 125, 0.1);
+      font-size: 1.4rem;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+      justify-content: flex-end;
+    }
+  }
+
+  &__button {
+    padding: 0.8rem 1rem;
+    border: none;
+    background-color: rgba(33, 63, 125, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0.4rem;
+    font-size: 1.4rem;
+
+    &:hover:not(:disabled) {
+      background-color: #f0f0f0;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__number {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.9rem;
+    color: $grey;
+    padding: 0.4rem 0.8rem;
+
+    &.active {
+      font-weight: 500;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    &__info {
+      font-size: 1.2rem;
+
+      select {
+        width: 6rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    &__button {
+      padding: 0.6rem 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    &__number {
+      font-size: 1.4rem;
+      padding: 0.3rem 0.6rem;
+    }
+  }
+}
