@@ -18,6 +18,7 @@ export interface InputProps {
   fontFamily?: string;
   fontSize?: string;
   marginBottom?: string;
+  color?: string;
 }
 
 type ButtonVariant = "primary" | "success" | "danger";

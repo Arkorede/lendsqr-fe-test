@@ -187,9 +187,13 @@ const Sidebar: React.FC = () => {
 
   const organisations = [
     { value: "", label: "Switch Organization" },
-    { value: "lendsqr", label: "lendsqr" },
-    { value: "microsoft", label: "microsoft" },
+    { value: "lendsqr", label: "Lendsqr" },
+    { value: "microsoft", label: "Microsoft" },
   ];
+
+  // const backgroundColor = {
+  //   backgroundColor: "red",
+  // };
 
   return (
     <div className="sidebar-container">
@@ -206,7 +210,8 @@ const Sidebar: React.FC = () => {
             options={organisations}
             height="3.2rem"
             marginBottom="0"
-            fontSize="1.3rem"
+            fontSize="1.6rem"
+            color="#213F7D"
           />
         </li>
         {sidebarNavList.map((group, groupIndex) => (

@@ -17,6 +17,7 @@ const Input: React.FC<InputProps> = ({
   fontFamily,
   fontSize,
   marginBottom,
+  color,
 }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -42,6 +43,7 @@ const Input: React.FC<InputProps> = ({
     width: width || "100%",
     fontFamily: fontFamily || "inherit",
     fontSize: fontSize || "1.4rem",
+    color: color || "",
   };
 
   const inputMargin = {

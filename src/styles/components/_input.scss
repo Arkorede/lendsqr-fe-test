@@ -52,13 +52,23 @@
     }
   }
 
-  select,
+  select {
+    height: var(--input-height, 5rem);
+    width: var(--input-width, 100%);
+    padding-right: 0.8rem;
+    color: var(--input-color, "");
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
   input[type="date"] {
     height: var(--input-height, 5rem);
     width: var(--input-width, 100%);
     padding: 0.5rem;
     border: none;
     outline: none;
+    cursor: pointer;
   }
 }
 

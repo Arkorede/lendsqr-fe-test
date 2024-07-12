@@ -57,6 +57,10 @@
   }
 }
 
+input[value] {
+  font-family: inherit;
+}
+
 @media (max-width: 1024px) {
   .login-page {
     flex-direction: column;
