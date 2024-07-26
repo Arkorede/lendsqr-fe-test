@@ -39,21 +39,14 @@ const FilterForm: React.FC<FilterFormProps> = ({
     onFilter(column, "");
   };
 
-  function toTitleCase(text: string): string {
-    return text.replace(
-      /\w\S*/g,
-      (word) => word.charAt(0).toUpperCase() + word.substr(1).toLowerCase()
-    );
-  }
-
   return (
     <form ref={formRef} className="filter-form" onSubmit={handleSubmit}>
       <Input
-        label={toTitleCase(column)}
-        name={toTitleCase(column)}
+        label={column}
+        name={column}
         type="text"
         height="4rem"
-        value={toTitleCase(filterValue)}
+        value={filterValue}
         onChange={handleInputChange}
       />
       <div className="form-buttons">

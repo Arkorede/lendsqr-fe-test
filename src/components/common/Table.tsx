@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 // import { useNavigate } from "react-router-dom";
 import "../../styles/components/_table.scss";
 import { CiMenuKebab } from "react-icons/ci";
@@ -8,12 +8,16 @@ import { Link } from "react-router-dom";
 import { IoEyeOutline } from "react-icons/io5";
 import { GrUserExpert } from "react-icons/gr";
 import { RiUserUnfollowLine } from "react-icons/ri";
-// import FilterForm from "./FilterForm";
+import FilterForm from "./FilterForm";
 import Pagination from "./Pagination";
 
 interface TableData {
   id: number;
   [key: string]: any;
+}
+
+interface ColumnMapType {
+  [key: string]: string | string[];
 }
 
 interface TableProps {
@@ -25,16 +29,60 @@ const Table: React.FC<TableProps> = ({ data }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
-  // const [filterValues, setFilterValues] = useState<Record<string, string>>({});
+  const [filterValues, setFilterValues] = useState<Record<string, string>>({});
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(10);
 
-  const totalPages = Math.ceil(data.length / recordsPerPage);
+  const columnMap: ColumnMapType = {
+    organization: "organization",
+    username: ["first_name", "last_name"],
+    email: "email",
+    "phone number": "phone",
+    "date joined": "date_joined",
+    status: "status",
+  };
+
+  const filteredData = useMemo(() => {
+    return data.filter((item) =>
+      Object.entries(filterValues).every(([column, value]) => {
+        const dataKey = columnMap[column];
+        if (Array.isArray(dataKey)) {
+          return dataKey.some((key) =>
+            String(item[key]).toLowerCase().includes(value.toLowerCase())
+          );
+        } else {
+          return String(item[dataKey])
+            .toLowerCase()
+            .includes(value.toLowerCase());
+        }
+      })
+    );
+  }, [data, filterValues]);
+
+  console.log(filterValues);
+  console.log(filteredData);
+
+  const columns = [
+    "organization",
+    "username",
+    "email",
+    "phone number",
+    "date joined",
+    "status",
+  ];
+
+  const totalPages = Math.ceil(filteredData.length / recordsPerPage);
+
+  useEffect(() => {
+    if (totalPages > 0 && currentPage > totalPages) {
+      setCurrentPage(Math.max(1, totalPages));
+    }
+  }, [filteredData, recordsPerPage, currentPage, totalPages]);
 
   const indexOfLastItem = currentPage * recordsPerPage;
   const indexOfFirstItem = indexOfLastItem - recordsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
 
@@ -63,32 +111,16 @@ const Table: React.FC<TableProps> = ({ data }) => {
     setActiveFilter(activeFilter === column ? null : column);
   };
 
-  // const handleFilter = (column: string, value: string) => {
-  //   setFilterValues((prev) => ({ ...prev, [column]: value }));
-  // };
+  const handleFilter = (column: string, value: string) => {
+    setFilterValues((prev) => ({ ...prev, [column]: value }));
+    setCurrentPage(1);
+  };
 
   // const navigate = useNavigate();
-
-  // const filteredData = useMemo(() => {
-  //   return data.filter((item) =>
-  //     Object.entries(filterValues).every(([column, value]) =>
-  //       String(item[column]).toLowerCase().includes(value.toLowerCase())
-  //     )
-  //   );
-  // }, [data, filterValues]);
 
   const toggleDropdown = (id: number) => {
     setOpenDropdownId(openDropdownId === id ? null : id);
   };
-
-  const columns = [
-    "Organization",
-    "Username",
-    "Email",
-    "Phone number",
-    "Date joined",
-    "Status",
-  ];
 
   return (
     <>
@@ -106,13 +138,13 @@ const Table: React.FC<TableProps> = ({ data }) => {
                       onClick={() => toggleFilter(column)}
                     />
                   </div>
-                  {/* {activeFilter === column && (
+                  {activeFilter === column && (
                     <FilterForm
                       onFilter={handleFilter}
                       onClose={() => setActiveFilter(null)}
                       column={column}
                     />
-                  )} */}
+                  )}
                 </th>
               ))}
               <th></th>
@@ -128,7 +160,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
                   {item.first_name} {item.last_name}
                 </td>
                 <td className="">{item.email}</td>
-                <td className="">{item.bvn}</td>
+                <td className="">{item.phone}</td>
                 <td className="">{item.date_joined}</td>
                 <td className="">{getStatus(item.status)}</td>
                 <td>
