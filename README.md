@@ -31,7 +31,8 @@ The application will start and can be accessed at `http://localhost:5173` (or an
 ## Features
 
 - authentication
-- List of users and their details
+- List of users and their details.
+- Filtering of users based on their organization, username, email, phone number, date joined, and status.
 - toggling of status of users on the user details page (Active, Inactive, Pending and Blacklisted).
 
 ## Technologies Used
