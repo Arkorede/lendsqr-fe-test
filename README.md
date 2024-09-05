@@ -28,6 +28,8 @@ npm run dev
 
 The application will start and can be accessed at `http://localhost:5173` (or another port if 5173 is in use).
 
+The application is also live on: `https://israel-ashaolu-lendsqr-fe-test.netlify.app/`
+
 ## Features
 
 - authentication
