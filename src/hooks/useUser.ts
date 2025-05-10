@@ -17,7 +17,7 @@ const useUsers = () => {
           setUsers(storedUsers);
         } else {
           const response = await axios.get<User[]>(
-            "https://run.mocky.io/v3/49030dc0-8c52-47df-b64a-cd806fe556d7"
+            "https://run.mocky.io/v3/eb436bd0-8a7c-4964-a999-ce25321f1456"
           );
           await db.putMany(response.data);
           setUsers(response.data);
